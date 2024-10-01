@@ -1,0 +1,65 @@
+### Create a new user
+POST http://localhost:3000/api/users
+Content-Type: application/json
+
+{
+  "username": "john_doe",
+  "email": "john@example.com",
+  "password": "securepassword"
+}
+
+### Get all users
+GET http://localhost:3000/api/users
+
+### Get user by ID
+GET http://localhost:3000/api/users/66fc21d069676acad7cf76cc
+
+### Create a new organization
+POST http://localhost:3000/api/organizations
+Content-Type: application/json
+
+{
+  "name": "New Organization",
+  "description": "Description of the organization"
+}
+
+### Add user to organization
+POST http://localhost:3000/api/organizations/66fc225c69676acad7cf76d0/users
+Content-Type: application/json
+
+{
+  "userId": "66fc21d069676acad7cf76cc",
+  "role": "viewer"
+}
+
+### Change user role in organization
+PUT http://localhost:3000/api/organizations/66fc225c69676acad7cf76d0/users/66fc21d069676acad7cf76cc
+Content-Type: application/json
+
+{
+  "role": "admin"
+}
+
+### Create a new project
+POST http://localhost:3000/api/projects
+Content-Type: application/json
+
+{
+  "name": "New Project",
+  "description": "Description of the project",
+  "organizationId": "66fc225c69676acad7cf76d0",
+  "ownerId": "USER_ID_HERE"
+}
+
+### Update a project
+PUT http://localhost:3000/api/projects/PROJECT_ID_HERE
+Content-Type: application/json
+
+{
+  "name": "Updated Project Name",
+  "description": "Updated description",
+  "userId": "USER_ID_HERE"
+}
+
+### Get all projects for a user
+GET http://localhost:3000/api/projects/user/USER_ID_HERE
