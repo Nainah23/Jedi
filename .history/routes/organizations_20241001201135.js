@@ -6,21 +6,14 @@ const { Organization, User } = require('../models');
 // Create a new organization
 router.post('/:id', async (req, res) => {
     try {
-      const user = await User.findById(req.params.id);
-  
+      const user = await User.findById(req.params.id);  
       if (!user) {
         return res.status(404).json({ error: 'User not found' });
-      }
-  
-      const organization = new Organization({
-        ...req.body,
-        organizerId: req.params.id, 
-      });
+      }  
+      const organization = new Organization(req.body);
   
       organization.users.push({ user: req.params.id, role: 'admin' });
-  
       await organization.save();
-  
       user.organizations.push(organization._id);
       await user.save();
   

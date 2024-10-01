@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 
-// User schema
 const userSchema = new mongoose.Schema({
   name: String,
   email: { type: String, unique: true },
@@ -8,17 +7,14 @@ const userSchema = new mongoose.Schema({
   organizations: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Organization' }],
 });
 
-// Organization schema
 const organizationSchema = new mongoose.Schema({
   name: String,
-  organizerId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },  // Added organizerId
   users: [{
-    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+    : { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
     role: { type: String, enum: ['admin', 'editor', 'viewer', 'data-entry'] },
   }],
 });
 
-// Project schema
 const projectSchema = new mongoose.Schema({
   name: String,
   description: String,
@@ -32,7 +28,6 @@ const projectSchema = new mongoose.Schema({
   }],
 });
 
-// Models
 const User = mongoose.model('User', userSchema);
 const Organization = mongoose.model('Organization', organizationSchema);
 const Project = mongoose.model('Project', projectSchema);

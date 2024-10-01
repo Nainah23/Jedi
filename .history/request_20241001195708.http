@@ -15,11 +15,12 @@ GET http://localhost:3000/api/users
 GET http://localhost:3000/api/users/66fc286e69676acad7cf76ed
 
 ### Create a new organization
-POST http://localhost:3000/api/organizations/66fc286e69676acad7cf76ed
+POST http://localhost:3000/api/organizations
 Content-Type: application/json
 
 {
   "name": "New Organization",
+  "use"
   "description": "Description of the organization"
 }
 

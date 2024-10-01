@@ -6,8 +6,10 @@ const { Organization, User } = require('../models');
 // Create a new organization
 router.post('/:id', async (req, res) => {
     try {
+      // Find the user by the provided user ID in the URL parameter
       const user = await User.findById(req.params.id);
   
+      // Check if the user exists
       if (!user) {
         return res.status(404).json({ error: 'User not found' });
       }
